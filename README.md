@@ -38,6 +38,14 @@ The project is built using HTML, CSS, and JavaScript.
 
 ---
 
+## Example Grammar Input
+
+E -> E + T | T  
+T -> T * F | F  
+F -> ( E ) | id
+
+---
+
 ## Author
 
 **Dheetchana K**
