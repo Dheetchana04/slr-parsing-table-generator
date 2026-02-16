@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLR(1) Parsing Table Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1 {
+            color: #007BFF;
+            text-align: center;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+        button {
+            display: block;
+            margin: 0 auto;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #output {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>SLR(1) Parsing Table Generator</h1>
+    <textarea id="grammar" placeholder="Enter grammar rules here (e.g., E -> E+T | T)"></textarea>
+    <button onclick="generateParsingTable()">Generate Parsing Table</button>
+    <div id="output">
+        <strong>Parsing table will appear here...</strong>
+    </div>
+
+    <script>
+        function generateParsingTable() {
+            const grammarInput = document.getElementById('grammar').value.trim();
+            if (!grammarInput) {
+                alert("Please enter grammar rules!");
+                return;
+            }
+
+            try {
+                // Dummy Data for Parsing Table (Replace with Actual Logic)
+                const terminals = ['+', '*', '(', ')', 'id', '$'];
+                const nonTerminals = ['E', 'T', 'F'];
+                const states = ['S0', 'S1', 'S2', 'S3', 'S4', 'S5'];
+                
+                const actionTable = [
+                    { '+': '', '*': '', '(': 'S4', ')': '', 'id': 'S5', '$': '' },
+                    { '+': 'S6', '*': '', '(': '', ')': '', 'id': '', '$': 'accept' },
+                    { '+': 'R2', '*': 'S7', '(': '', ')': 'R2', 'id': '', '$': 'R2' },
+                    { '+': 'R4', '*': 'R4', '(': '', ')': 'R4', 'id': '', '$': 'R4' },
+                    { '+': '', '*': '', '(': 'S4', ')': '', 'id': 'S5', '$': '' },
+                    { '+': 'R6', '*': 'R6', '(': '', ')': 'R6', 'id': '', '$': 'R6' }
+                ];
+                
+                const gotoTable = [
+                    { 'E': 'S1', 'T': 'S2', 'F': 'S3' },
+                    { 'E': '', 'T': '', 'F': '' },
+                    { 'E': '', 'T': '', 'F': '' },
+                    { 'E': '', 'T': '', 'F': '' },
+                    { 'E': 'S8', 'T': 'S2', 'F': 'S3' },
+                    { 'E': '', 'T': '', 'F': '' }
+                ];
+
+                // Generate HTML Table
+                let output = '<h3>SLR(1) Parsing Table</h3>';
+                output += '<table><tr><th>State</th>';
+
+                terminals.forEach(function(term) {
+                    output += '<th>' + term + '</th>';
+                });
+                nonTerminals.forEach(function(nonTerm) {
+                    output += '<th>' + nonTerm + '</th>';
+                });
+                output += '</tr>';
+
+                states.forEach(function(state, index) {
+                    output += '<tr><td>' + state + '</td>';
+                    terminals.forEach(function(term) {
+                        output += '<td>' + (actionTable[index][term] || '') + '</td>';
+                    });
+                    nonTerminals.forEach(function(nonTerm) {
+                        output += '<td>' + (gotoTable[index][nonTerm] || '') + '</td>';
+                    });
+                    output += '</tr>';
+                });
+
+                output += '</table>';
+                document.getElementById('output').innerHTML = output;
+
+            } catch (error) {
+                document.getElementById('output').innerHTML = 
+                    '<strong>Error:</strong> ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>
