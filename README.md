@@ -1,55 +1,51 @@
-# SLR(1) Parsing Table Generator
+# 🌳 SLR(1) Parsing Table Generator
 
-This is a simple web-based Compiler Design mini project that generates an SLR(1) parsing table layout for a given grammar input.
+A simple **web-based Compiler Design mini project** that generates an **SLR(1) parsing table layout** for a given grammar input.
 
-The project is built using HTML, CSS, and JavaScript.
-
-----
-## 🔗 Live Demo
-👉 https://dheetchana04.github.io/repo-name/SLR.html
+Built using **HTML, CSS, and JavaScript**.
 
 ---
 
-## Features
-
-- User-friendly grammar input box  
-- Generates ACTION and GOTO parsing table format  
-- Clean and responsive UI  
+## 🚀 Live Demo
+👉 https://dheetchana04.github.io/slr-parsing-table-generator/SLR.html  
 
 ---
 
-## Technologies Used
+## ✨ Features
 
-- HTML  
-- CSS  
-- JavaScript  
-
----
-
-## How to Run
-
-1. Download or clone the repository  
-2. Open `index.html` in your browser  
+✅ User-friendly grammar input box  
+✅ Generates ACTION and GOTO parsing table format  
+✅ Clean, responsive, and beginner-friendly UI  
 
 ---
 
-## Future Improvements
+## 🛠️ Technologies Used
 
-- Implement actual FIRST and FOLLOW computation  
-- Automate LR(0) item generation  
-- Detect shift/reduce conflicts  
-- Full SLR parsing logic  
+- 🌐 HTML  
+- 🎨 CSS  
+- ⚡ JavaScript  
 
 ---
 
-## Example Grammar Input
+## ▶️ How to Run
 
+1. Clone or download this repository  
+2. Open `SLR.html` in any browser  
+
+---
+
+## 🔮 Future Improvements
+
+- Implement actual **FIRST** and **FOLLOW** computation  
+- Automate **LR(0) item set generation**  
+- Detect **shift/reduce conflicts**  
+- Add full SLR parsing logic  
+
+---
+
+## 📌 Example Grammar Input
+
+```txt
 E -> E + T | T  
 T -> T * F | F  
 F -> ( E ) | id
-
----
-
-## Author
-
-**Dheetchana K**
