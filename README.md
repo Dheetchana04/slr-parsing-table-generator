@@ -4,6 +4,10 @@ This is a simple web-based Compiler Design mini project that generates an SLR(1)
 
 The project is built using HTML, CSS, and JavaScript.
 
+----
+## 🔗 Live Demo
+👉 https://dheetchana04.github.io/repo-name/SLR.html
+
 ---
 
 ## Features
